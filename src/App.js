@@ -36,6 +36,42 @@ function App() {
         till: "247247",
         category: "Banking",
       },
+      200999: {
+        name: "M-Shwari",
+        type: "Paybill",
+        till: "200999",
+        category: "Banking",
+      },
+      303030: {
+        name: "Airtel Money",
+        type: "Paybill",
+        till: "303030",
+        category: "Telecoms",
+      },
+      888880: {
+        name: "Kenya Power",
+        type: "Paybill",
+        till: "888880",
+        category: "Utilities",
+      },
+      888888: {
+        name: "Nairobi Water",
+        type: "Paybill",
+        till: "888888",
+        category: "Utilities",
+      },
+      290290: {
+        name: "Faulu Microfinance",
+        type: "Paybill",
+        till: "290290",
+        category: "Banking",
+      },
+      101010: {
+        name: "Stanbic Bank",
+        type: "Paybill",
+        till: "101010",
+        category: "Banking",
+      },
       "000000": {
         name: "Test Business",
         type: "Till Number",
@@ -51,7 +87,7 @@ function App() {
         setResult(found);
       } else {
         setError(
-          "No business found for that number. Try 522522, 400200 or 247247.",
+          "Till number not found. Please check the number and try again.",
         );
       }
     } catch (err) {
