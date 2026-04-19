@@ -10,43 +10,43 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  function handleSearch() {
+  async function handleSearch() {
     if (!query.trim()) return;
 
     setLoading(true);
     setError("");
     setResult(null);
 
-    setTimeout(() => {
-      const mockData = {
-        522522: {
-          name: "Safaricom PLC",
-          type: "Paybill",
-          till: "522522",
-          category: "Telecoms",
-        },
-        400200: {
-          name: "KCB Bank",
-          type: "Paybill",
-          till: "400200",
-          category: "Banking",
-        },
-        247247: {
-          name: "Equity Bank",
-          type: "Paybill",
-          till: "247247",
-          category: "Banking",
-        },
-        "000000": {
-          name: "Test Business",
-          type: "Till Number",
-          till: "000000",
-          category: "Retail",
-        },
-      };
+    const mockData = {
+      522522: {
+        name: "Safaricom PLC",
+        type: "Paybill",
+        till: "522522",
+        category: "Telecoms",
+      },
+      400200: {
+        name: "KCB Bank",
+        type: "Paybill",
+        till: "400200",
+        category: "Banking",
+      },
+      247247: {
+        name: "Equity Bank",
+        type: "Paybill",
+        till: "247247",
+        category: "Banking",
+      },
+      "000000": {
+        name: "Test Business",
+        type: "Till Number",
+        till: "000000",
+        category: "Retail",
+      },
+    };
 
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       const found = mockData[query.trim()];
-
       if (found) {
         setResult(found);
       } else {
@@ -54,9 +54,11 @@ function App() {
           "No business found for that number. Try 522522, 400200 or 247247.",
         );
       }
-
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   }
 
   function handleKeyDown(e) {
